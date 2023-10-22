@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<a href="{% url 'create_plan' %}">
+     <div style="
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 20px;
+          ">
+          <h1 style="
+               font-weight: 500;
+               font-size: 20px;
+               ">
+               create a new plan
+          </h1>
+          <div style="width: 30px; height: 30px; background-color: black; border-radius: 50%; display: flex; justify-content: center; align-items: center; ">
+               <p style="color: white; text-align: center;">+</p>
+          </div>
+     </div>
+</a>
+
+
+
+<style>
+
+     .container {
+          width: 250px;
+          text-align: center;
+     }
+
+     .tile {
+          margin: 3px;
+          display: inline-block;
+          width: 100px; 
+          height: 100px; 
+          border-radius: 50%; 
+          align-items: center; 
+          line-height: 100px;
+     }
+
+     .event-box {
+          width: 300px;
+          padding: 20px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          margin: 20px;
+     }
+
+     .location {
+          font-weight: bold;
+     }
+
+     .time {
+          margin-top: 10px;
+          color: #555;
+     }
+
+</style>
+
+<h1 style="
+font-size: 20px;
+">friends!</h1>
+
+{% for status in statuss %}
+     <div style="
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 10px;
+     margin-bottom: 20px;
+     ">
+     <h1 style="
+     font-size: 20px;
+     ">{{ status.person.name }}</h1>
+     <a href="{{ status.person.name}}-profile">
+          {% if status.status == 'b' %}
+               <div style="width: 50px; height: 50px; background-color: #ef476f; border-radius: 50%;"></div>
+          {% elif status.status == 'f' %}
+               <div style="width: 50px; height: 50px; background-color: #06d6a0; border-radius: 50%;"></div>
+          {% elif status.status == 'p'%}
+               <div style="width: 50px; height: 50px; background-color: #ffd166; border-radius: 50%;"></div>
+          {% elif status.status == 'e'%}
+               <div style="width: 50px; height: 50px; background-color: #677377; border-radius: 50%;"></div>
+          {% endif %}
+
+     </a>
+</div>
+     
+     
+{% endfor %}
+
+<h1 style="
+font-size: 20px;
+">plans!</h1>
+
+
+{% for plan, people in plans.items %}
+     <div class="event-box">
+          <div class="location">eating @ {{plan.location}}</div>
+          <div class="time">
+          {{plan.start_time}} - {{plan.end_time}}
+          </div>
+          {% for person in people %}
+          <p>{{person}}</p>
+          {% endfor %}
+     </div>
+{% endfor %}
+
+{% endblock %}

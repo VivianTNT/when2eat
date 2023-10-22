@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a href="{% url 'create_plan' %}">
+    <div style="
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 20px;
+          ">
+          <h1 style="
+               font-weight: 500;
+               font-size: 20px;
+               ">
+               create a new plan
+          </h1>
+          <div style="width: 30px; height: 30px; background-color: black; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+               <p style="color: white; text-align: center;">+</p>
+          </div>
+     </div>
+</a>
+
+<h1 style="
+font-weight: 500;
+font-size: 20px;
+">{{person.name}}'s profile</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}  {# Render the form fields #}
+  <div class="my-button">
+    <input style="
+        margin-top: 10px;
+        width: 100px;
+        height: 30px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        background-color: #D8BDA1,
+    " class="django-submit" value="save" type="submit">
+    </div>
+</form>
+
+{% endblock %}

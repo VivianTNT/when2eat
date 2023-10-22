@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <title>when2eat</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+
+    <style>
+        /* Remove default link formatting */
+        a {
+            text-decoration: none; /* Remove underline */
+            color: inherit; /* Use the default text color */
+            /* You can add more styles as needed */
+        }
+    </style>
+</head>
+<body>
+    
+    <div style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #FFF2E5;
+        min-height: 100vh;
+        padding-bottom: 50px;
+    ">
+        <a href="/">
+            <img width="300px" src="https://i.imgur.com/nshd6Kp.png"></img>
+
+        </a>
+
+        <div style="
+            background-color: white;
+            border-radius: 25px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 50px;
+            padding-right: 50px;
+            width: 500px;
+        ">
+
+            {% block content %}
+        </div>
+    </div>
+    
+    {% endblock %}
+</body>
+</html>
